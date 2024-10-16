@@ -1,15 +1,19 @@
 from pathlib import Path
 import sys
+import os
 
 # Get the absolute path of the current file
 FILE = Path(__file__).resolve()
-# Get the parent directory of the current file
+# Get the root directory based on the location of the settings.py file
 ROOT = FILE.parent
+
 # Add the root path to the sys.path list if it is not already there
 if ROOT not in sys.path:
     sys.path.append(str(ROOT))
-# Get the relative path of the root directory with respect to the current working directory
-ROOT = ROOT.relative_to(Path.cwd())
+
+# Debugging information
+print(f"Current working directory: {Path.cwd()}")
+print(f"Root directory: {ROOT}")
 
 # Sources
 IMAGE = 'Image'
@@ -33,10 +37,15 @@ VIDEOS_DICT = {
     'video_4': VIDEO_DIR / 'video_4.mp4',
 }
 
+# Check if video files exist
+for video_key, video_path in VIDEOS_DICT.items():
+    if not os.path.exists(video_path):
+        print(f"Warning: Video file not found: {video_path}")
+
 # ML Model config
 MODEL_DIR = ROOT / 'weights'
 DETECTION_MODEL = MODEL_DIR / 'yolov8n.pt'
-# In case of your custome model comment out the line above and
+# In case of your custom model comment out the line above and
 # Place your custom model pt file name at the line below 
 # DETECTION_MODEL = MODEL_DIR / 'my_detection_model.pt'
 
