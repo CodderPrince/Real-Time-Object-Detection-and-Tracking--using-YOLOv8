@@ -29,8 +29,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# '''Modify Team member'''
 # Styling function to avoid repetitive code
 def create_row(role, name, id, bg_color, font_color):
     st.markdown(
@@ -46,11 +44,9 @@ def create_row(role, name, id, bg_color, font_color):
         unsafe_allow_html=True
     )
 
-
 # Create rows with different roles, colors, and appropriate font colors
 create_row("Team Leader:", "Md. An Nahian Prince", "12105007", 
           "#0d47a1", "#ffffff")  # Dark blue background with white text
-
 
 create_row("Team Assistant:", "Shithi Rani Roy", "12105009", 
            "#fff8cc", "#705600")  # Yellowish background with dark yellow text
@@ -130,7 +126,6 @@ if source_radio == settings.IMAGE:
                         for box in boxes:
                             st.write(box.data)
                 except Exception as ex:
-                    # st.write(ex)
                     st.write("No image is uploaded yet!")
 
 elif source_radio == settings.VIDEO:
